@@ -29,4 +29,4 @@ const protect = (req, res, next) => {
     }
 };
 
-module.exports = { protect };h
+module.exports = { protect };
