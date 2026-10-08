@@ -7,14 +7,12 @@ const Session = require('../models/Session');
 
 router.post('/seed', async (req, res) => {
     try {
-        await User.deleteMany({});
         await Station.deleteMany({});
 
-        const dummyUser = await User.create({ name: "Kerry Chaudhary", email: "kerry@test.com", walletBalance: 500 });
         const station1 = await Station.create({ vendorName: "Tata Power", locationName: "Highway Hub-A, Surat", coordinates: { latitude: 21.17, longitude: 72.83 }, pricePerKwh: 15 });
         const station2 = await Station.create({ vendorName: "ChargeZone", locationName: "Expressway-B, Vadodara", coordinates: { latitude: 22.30, longitude: 73.18 }, pricePerKwh: 18 });
 
-        res.status(201).json({ message: "Database Seeded!", testUser: dummyUser, testStations: [station1, station2] });
+        res.status(201).json({ message: "Stations seeded!", testStations: [station1, station2] });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
